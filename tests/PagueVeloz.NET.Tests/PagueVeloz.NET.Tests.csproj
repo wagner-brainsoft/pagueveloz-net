@@ -55,11 +55,9 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Base.cs" />
+    <Compile Include="Ping.cs" />
     <Compile Include="Boleto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\PagueVeloz.NET\PagueVeloz.NET.csproj">

@@ -19,10 +19,7 @@ namespace PagueVeloz.NET.APIs.Boleto
         /// <returns>Os dados para identificação ao boleto emitido.</returns>
         public async Task<RetornoEmissaoDTO> EmitirAsync(EmissaoDTO dto)
         {
-            var response = await _client.PostAsync(Url, dto);
-            var normalized = await _client.NormalizeResponse<RetornoEmissaoDTO>(response);
-
-            return normalized;
+            return await _client.PostAsync<EmissaoDTO, RetornoEmissaoDTO>(Url, dto);
         }
     }
 }

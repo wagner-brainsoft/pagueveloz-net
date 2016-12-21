@@ -41,6 +41,11 @@ namespace PagueVeloz.NET.Util
             Boletos = new BoletoAPI(this);
         }
 
+        /// <summary>
+        /// Retorna adequadamente o host PagueVeloz com base no ambiente.
+        /// </summary>
+        /// <param name="environment">O ambiente que será utilizado.</param>
+        /// <returns>A url do host PagueVeloz.</returns>
         private string ResolveBaseURL(PagueVelozEnvironment environment)
         {
             if (environment == PagueVelozEnvironment.Sandbox)
@@ -55,47 +60,51 @@ namespace PagueVeloz.NET.Util
             throw new NotImplementedException($"Ambiente {environment.ToString()} não implementado.");
         }
 
-        #region HTTP
-
-        /// <summary>
-        /// Realiza um GET na API.
-        /// </summary>
-        /// <param name="url">Rota da API para requisição.</param>
-        /// <returns>O response da requisição.</returns>
-        public async Task<HttpResponseMessage> GetAsync(string url) => await _http.GetAsync(url);
-
-        /// <summary>
-        /// Realiza um POST na API.
-        /// </summary>
-        /// <typeparam name="T">O tipo do objeto que será enviado no body da requisição.</typeparam>
-        /// <param name="url">Rota da API para requisição.</param>
-        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
-        /// <returns>O response da requisição.</returns>
-        public async Task<HttpResponseMessage> PostAsync<T>(string url, T content) => await _http.PostAsync(url, content);
-
-        /// <summary>
-        /// Realiza um PUT na API.
-        /// </summary>
-        /// <typeparam name="T">O tipo do objeto que será enviado no body da requisição.</typeparam>
-        /// <param name="url">Rota da API para requisição.</param>
-        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
-        /// <returns>O response da requisição.</returns>
-        public async Task<HttpResponseMessage> PutAsync<T>(string url, T content) => await _http.PutAsync(url, content);
-
-        /// <summary>
-        /// Realiza um DELETE na API.
-        /// </summary>
-        /// <param name="url">Rota da API para requisição.</param>
-        /// <returns>O response da requisição.</returns>
-        public async Task<HttpResponseMessage> DeleteAsync(string url) => await _http.DeleteAsync(url);
-
         /// <summary>
         /// Trata o response recebido de uma requisição na API.
         /// </summary>
         /// <typeparam name="T">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="response">O response a ser tratado.</param>
         /// <returns>Um objeto do tipo 'T' obtido através do response.</returns>
-        public async Task<T> NormalizeResponse<T>(HttpResponseMessage response) => await _http.NormalizeResponse<T>(response);
+        private async Task<T> NormalizeResponse<T>(HttpResponseMessage response) => await _http.NormalizeResponse<T>(response);
+
+        #region HTTP
+
+        /// <summary>
+        /// Realiza um GET na API.
+        /// </summary>
+        /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <returns>Um objeto do tipo 'TOut'.</returns>
+        public async Task<TOut> GetAsync<TOut>(string url) => await NormalizeResponse<TOut>(await _http.GetAsync(url));
+
+        /// <summary>
+        /// Realiza um POST na API.
+        /// </summary>
+        /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
+        /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
+        /// <returns>Um objeto do tipo 'TOut'.</returns>
+        public async Task<TOut> PostAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PostAsync(url, content));
+
+        /// <summary>
+        /// Realiza um PUT na API.
+        /// </summary>
+        /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
+        /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
+        /// <returns>Um objeto do tipo 'TOut'.</returns>
+        public async Task<TOut> PutAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PutAsync(url, content));
+
+        /// <summary>
+        /// Realiza um DELETE na API.
+        /// </summary>
+        /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <returns>Um objeto do tipo 'TOut'.</returns>
+        public async Task<TOut> DeleteAsync<TOut>(string url) => await NormalizeResponse<TOut>(await _http.DeleteAsync(url));
 
         #endregion
 

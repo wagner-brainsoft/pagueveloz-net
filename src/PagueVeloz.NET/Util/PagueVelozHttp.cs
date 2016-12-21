@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Globalization;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,10 +79,15 @@ namespace PagueVeloz.NET.Util
 
             if (!response.IsSuccessStatusCode)
             {
-                throw new Exception("Erro na requisição"); //TODO: Tratar erros
+                throw new NotImplementedException("As respostas de erro da API não foram tratados."); //TODO: Tratar erros
             }
 
-            return JsonConvert.DeserializeObject<T>(content);
+            var settings = new JsonSerializerSettings()
+            {
+                Culture = CultureInfo.GetCultureInfoByIetfLanguageTag("pt-BR")
+            };
+
+            return JsonConvert.DeserializeObject<T>(content, settings);
         }
     }
 }

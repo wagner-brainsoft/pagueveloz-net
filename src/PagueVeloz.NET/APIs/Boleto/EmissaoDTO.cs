@@ -2,6 +2,9 @@
 
 namespace PagueVeloz.NET.APIs.Boleto
 {
+    /// <summary>
+    /// DTO utilizado para emissão de boletos.
+    /// </summary>
     public class EmissaoDTO
     {
         /// <summary>
@@ -40,7 +43,7 @@ namespace PagueVeloz.NET.APIs.Boleto
         public string Linha1 { get; set; }
 
         /// <summary>
-        /// Primeira linha de observações do boleto.
+        /// Segunda linha de observações do boleto.
         /// </summary>
         public string Linha2 { get; set; }
 

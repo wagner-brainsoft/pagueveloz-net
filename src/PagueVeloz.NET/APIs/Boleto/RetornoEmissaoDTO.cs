@@ -1,5 +1,8 @@
 ﻿namespace PagueVeloz.NET.APIs.Boleto
 {
+    /// <summary>
+    /// DTO de retorno da emissão de boletos.
+    /// </summary>
     public class RetornoEmissaoDTO
     {
         /// <summary>

@@ -84,7 +84,7 @@ namespace PagueVeloz.NET.Util
         /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
-        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
+        /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
         public async Task<TOut> PostAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PostAsync(url, content));
 
@@ -94,7 +94,7 @@ namespace PagueVeloz.NET.Util
         /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
-        /// <param name="content">Um objeto do tipo 'T' que será enviado no body da requisição.</param>
+        /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
         public async Task<TOut> PutAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PutAsync(url, content));
 
@@ -105,6 +105,28 @@ namespace PagueVeloz.NET.Util
         /// <param name="url">Rota da API para requisição.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
         public async Task<TOut> DeleteAsync<TOut>(string url) => await NormalizeResponse<TOut>(await _http.DeleteAsync(url));
+
+        /// <summary>
+        /// Realiza um POST na API.
+        /// </summary>
+        /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
+        public async Task<HttpResponseMessage> PostAsync<TIn>(string url, TIn content) => await _http.PostAsync(url, content);
+
+        /// <summary>
+        /// Realiza um PUT na API.
+        /// </summary>
+        /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
+        /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
+        public async Task<HttpResponseMessage> PutAsync<TIn>(string url, TIn content) => await _http.PutAsync(url, content);
+
+        /// <summary>
+        /// Realiza um DELETE na API.
+        /// </summary>
+        /// <param name="url">Rota da API para requisição.</param>
+        public async Task<HttpResponseMessage> DeleteAsync(string url) => await _http.DeleteAsync(url);
 
         #endregion
 

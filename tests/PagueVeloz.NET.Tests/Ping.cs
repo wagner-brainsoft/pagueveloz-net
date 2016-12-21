@@ -6,7 +6,7 @@ namespace PagueVeloz.NET.Tests
     public class Ping : Base
     {
         [TestMethod]
-        public void ConsigoPingarAPI()
+        public void Ping_ConsigoPingar()
         {
             Assert.AreEqual("pong", GetClient().GetAsync<string>("api/v1/ping").Result);
         }

@@ -21,5 +21,25 @@ namespace PagueVeloz.NET.APIs.Boleto
         {
             return await _client.PostAsync<EmissaoDTO, RetornoEmissaoDTO>(Url, dto);
         }
+
+        /// <summary>
+        /// Busca um boleto pelo id.
+        /// </summary>
+        /// <param name="id">O id do boleto.</param>
+        /// <returns>Informações do boleto.</returns>
+        public async Task<ConsultaDTO> ConsultarPorIdAsync(long id)
+        {
+            return await _client.GetAsync<ConsultaDTO>($"{Url}/{id}");
+        }
+
+        /// <summary>
+        /// Cancela um boleto.
+        /// </summary>
+        /// <param name="id">O id do boleto.</param>
+        /// <returns>Um bool confirmando o cancelamento.</returns>
+        public async Task CancelarAsync(long id)
+        {
+            await _client.DeleteAsync($"{Url}/{id}");
+        }
     }
 }

@@ -1,0 +1,6 @@
+packages/*
+*.suo
+src/PagueVeloz.NET/bin/*
+src/PagueVeloz.NET/obj/*
+tests/PagueVeloz.NET.Tests/bin/*
+tests/PagueVeloz.NET.Tests/obj/*

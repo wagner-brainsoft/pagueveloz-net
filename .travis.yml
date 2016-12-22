@@ -1,5 +1,8 @@
 language: csharp
+mono: none
+dotnet: 1.0.0-preview2-1-003155
 solution: PagueVeloz.sln
+
 install:
   - nuget restore PagueVeloz.sln
   - nuget install xunit.runners -Version 2.0.0 -OutputDirectory testrunner

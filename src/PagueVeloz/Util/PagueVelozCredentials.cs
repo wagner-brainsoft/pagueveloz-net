@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace PagueVeloz.NET.Util
+namespace PagueVeloz.Util
 {
     /// <summary>
     /// Autenticador para as requisições feitas nas API's PagueVeloz.
@@ -25,7 +25,7 @@ namespace PagueVeloz.NET.Util
         /// <summary>
         /// O base64 gerado a partir do email:token.
         /// </summary>
-        public string TokenBase64 => Convert.ToBase64String(Encoding.Default.GetBytes($"{_email}:{_token}"));
+        public string TokenBase64 => Convert.ToBase64String(Encoding.UTF8.GetBytes($"{_email}:{_token}"));
 
         /// <summary>
         /// O conteúdo para o header 'Authorization' das requisições.

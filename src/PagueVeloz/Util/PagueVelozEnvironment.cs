@@ -1,4 +1,4 @@
-﻿namespace PagueVeloz.NET.Util
+﻿namespace PagueVeloz.Util
 {
     /// <summary>
     /// Enum para definição do ambiente PagueVeloz.

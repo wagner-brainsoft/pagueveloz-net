@@ -1,7 +1,7 @@
-﻿using PagueVeloz.NET.Util;
+﻿using PagueVeloz.Util;
 using System.Threading.Tasks;
 
-namespace PagueVeloz.NET.APIs.Boleto
+namespace PagueVeloz.APIs.Boleto
 {
     /// <summary>
     /// API para emissão a gerenciamento de boletos.

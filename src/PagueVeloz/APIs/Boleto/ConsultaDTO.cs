@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace PagueVeloz.NET.APIs.Boleto
+namespace PagueVeloz.APIs.Boleto
 {
     /// <summary>
     /// DTO de retorno das consultas de boletos.

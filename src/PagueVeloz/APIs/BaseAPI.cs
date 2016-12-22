@@ -1,6 +1,6 @@
-﻿using PagueVeloz.NET.Util;
+﻿using PagueVeloz.Util;
 
-namespace PagueVeloz.NET.APIs
+namespace PagueVeloz.APIs
 {
     public abstract class BaseAPI
     {

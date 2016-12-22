@@ -1,9 +1,9 @@
-﻿using PagueVeloz.NET.APIs.Boleto;
+﻿using PagueVeloz.APIs.Boleto;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace PagueVeloz.NET.Util
+namespace PagueVeloz.Util
 {
     /// <summary>
     /// Client para realizar requisições nas API's PagueVeloz.

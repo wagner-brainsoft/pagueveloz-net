@@ -1,10 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PagueVeloz.NET.APIs.Boleto;
+﻿using PagueVeloz.APIs.Boleto;
 using System;
+using Xunit;
 
-namespace PagueVeloz.NET.Tests
+namespace PagueVeloz.Tests
 {
-    [TestClass]
     public class Boleto : Base
     {
         private RetornoEmissaoDTO Emitir()
@@ -20,54 +19,54 @@ namespace PagueVeloz.NET.Tests
             return GetClient().Boletos.EmitirAsync(emissao).Result;
         }
 
-        [TestMethod]
+        [Fact]
         public void Boleto_ConsigoEmitirComOsCamposMinimos()
         {
             var retorno = Emitir();
 
-            Assert.IsNotNull(retorno);
-            Assert.IsTrue(retorno.Id > 0);
-            Assert.IsFalse(string.IsNullOrWhiteSpace(retorno.Url));
+            Assert.NotNull(retorno);
+            Assert.True(retorno.Id > 0);
+            Assert.False(string.IsNullOrWhiteSpace(retorno.Url));
         }
 
-        [TestMethod]
+        [Fact]
         public void Boleto_ConsigoConsultarPeloId()
         {
             var retorno = Emitir();
 
-            Assert.IsNotNull(retorno);
-            Assert.IsTrue(retorno.Id > 0);
+            Assert.NotNull(retorno);
+            Assert.True(retorno.Id > 0);
 
             var boleto = GetClient().Boletos.ConsultarPorIdAsync(retorno.Id).Result;
 
-            Assert.IsNotNull(boleto);
-            Assert.AreEqual(retorno.Id, boleto.Id);
-            Assert.AreEqual(retorno.Url, boleto.Url);
-            Assert.AreEqual("Joãozinho", boleto.Sacado);
-            Assert.AreEqual("460.844.654-12", boleto.Documento);
-            Assert.AreEqual(100m, boleto.Valor);
-            Assert.AreEqual(DateTime.Today.AddDays(10), boleto.Vencimento);
+            Assert.NotNull(boleto);
+            Assert.Equal(retorno.Id, boleto.Id);
+            Assert.Equal(retorno.Url, boleto.Url);
+            Assert.Equal("Joãozinho", boleto.Sacado);
+            Assert.Equal("460.844.654-12", boleto.Documento);
+            Assert.Equal(100m, boleto.Valor);
+            Assert.Equal(DateTime.Today.AddDays(10), boleto.Vencimento);
         }
 
-        [TestMethod]
+        [Fact]
         public void Boleto_ConsigoCancelar()
         {
             var retorno = Emitir();
-
-            Assert.IsNotNull(retorno);
-            Assert.IsTrue(retorno.Id > 0);
+            
+            Assert.NotNull(retorno);
+            Assert.True(retorno.Id > 0);
 
             var boleto = GetClient().Boletos.ConsultarPorIdAsync(retorno.Id).Result;
 
-            Assert.IsNotNull(boleto);
-            Assert.IsFalse(boleto.Cancelado);
+            Assert.NotNull(boleto);
+            Assert.False(boleto.Cancelado);
 
             GetClient().Boletos.CancelarAsync(boleto.Id).Wait();
 
             boleto = GetClient().Boletos.ConsultarPorIdAsync(retorno.Id).Result;
 
-            Assert.IsNotNull(boleto);
-            Assert.IsTrue(boleto.Cancelado);
+            Assert.NotNull(boleto);
+            Assert.True(boleto.Cancelado);
         }
     }
 }

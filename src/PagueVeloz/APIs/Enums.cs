@@ -1,4 +1,4 @@
-﻿namespace PagueVeloz.NET.APIs
+﻿namespace PagueVeloz.APIs
 {
     public class Enums
     {
@@ -17,7 +17,7 @@
             DispositivoPINPAD = 10,
             DispositivoPOS = 11,
             DispositivoModerninha = 12,
-            OperacaoCartao = 13,
+            OperacaoCartao = 13
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PagueVeloz.NET.APIs.Boleto
+namespace PagueVeloz.APIs.Boleto
 {
     /// <summary>
     /// DTO utilizado para emissão de boletos.

@@ -1,6 +1,6 @@
-﻿using PagueVeloz.NET.Util;
+﻿using PagueVeloz.Util;
 
-namespace PagueVeloz.NET.Tests
+namespace PagueVeloz.Tests
 {
     public class Base
     {

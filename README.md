@@ -1,5 +1,5 @@
 # pagueveloz-net
-Biblioteca .NET (c#) da PagueVeloz
+Biblioteca .NET (C#) de integração com os serviços da API PagueVeloz.
 
 Instanciando o client:
 
@@ -22,7 +22,7 @@ var emissao = new EmissaoDTO()
 var retorno = await client.Boletos.EmitirAsync(emissao);
 ```
 
-Fazer um request na API:
+Fazendo um request diretamente na API:
 
 ```csharp
 var retorno = await client.GetAsync<string>("api/v1/ping");

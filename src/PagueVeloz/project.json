@@ -1,5 +1,8 @@
 ﻿{
+  "title": "PagueVeloz",
   "version": "1.0.0-*",
+  "authors": [ "Robson da Silva" ],
+  "description": "Biblioteca de integração com os serviços da API PagueVeloz",
 
   "dependencies": {
     "NETStandard.Library": "1.6.1",
@@ -8,5 +11,20 @@
 
   "frameworks": {
     "netstandard1.1": {}
+  },
+
+  "runtimes": {
+    "win10-x86": {}
+  },
+
+  "packOptions": {
+    "iconUrl": "https://www.pagueveloz.com.br/Content/Img/apple-touch-icon-57x57.png",
+    "owners": [ "pagueveloz" ],
+    "tags": [ "pagueveloz", "pague", "veloz", "boleto", "cartão", "pagamento" ],
+    "requireLicenseAcceptance": false,
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/PagueVeloz/pagueveloz-net.git"
+    }
   }
 }

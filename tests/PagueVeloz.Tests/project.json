@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "PagueVeloz": "1.0.0-*"
+    "PagueVeloz.NET": "1.0.0-*"
   },
 
   "frameworks": {

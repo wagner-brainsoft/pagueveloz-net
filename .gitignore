@@ -4,11 +4,8 @@
 .vs/restore.dg
 .vs/config/applicationhost.config
 packages/*
-src/PagueVeloz.NET/bin/*
-src/PagueVeloz.NET/obj/*
 src/PagueVeloz/bin/*
 src/PagueVeloz/obj/*
-tests/PagueVeloz.NET.Tests/bin/*
-tests/PagueVeloz.NET.Tests/obj/*
+src/PagueVeloz/pkg/*
 tests/PagueVeloz.Tests/bin/*
 tests/PagueVeloz.Tests/obj/*

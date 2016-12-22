@@ -37,6 +37,22 @@ namespace PagueVeloz.Util
             return new StringContent(Serialize(value), Encoding.UTF8, "application/json");
         }
 
+        private async Task EnsureSuccessStatusCode(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                var message = $"A API retornou status code {(int)response.StatusCode} para o request.";
+
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    new HttpRequestException(message);
+                }
+
+                throw new HttpRequestException(message, new HttpRequestException(content));
+            }
+        }
+
         public async Task<HttpResponseMessage> GetAsync(string url)
         {
             using (var http = GetHttpClient())
@@ -75,12 +91,9 @@ namespace PagueVeloz.Util
 
         public async Task<T> NormalizeResponse<T>(HttpResponseMessage response)
         {
-            var content = await response.Content.ReadAsStringAsync();
+            await EnsureSuccessStatusCode(response);
 
-            if (!response.IsSuccessStatusCode)
-            {
-                throw new NotImplementedException("As respostas de erro da API não foram tratados."); //TODO: Tratar erros
-            }
+            var content = await response.Content.ReadAsStringAsync();
 
             var settings = new JsonSerializerSettings()
             {

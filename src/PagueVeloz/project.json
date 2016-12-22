@@ -1,5 +1,5 @@
 ﻿{
-  "title": "PagueVeloz .NET",
+  "title": "PagueVeloz",
   "version": "1.0.0-*",
   "authors": [ "Robson da Silva" ],
   "description": "Biblioteca de integração com os serviços da API PagueVeloz",

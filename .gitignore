@@ -6,9 +6,6 @@
 packages/*
 src/PagueVeloz.NET/bin/*
 src/PagueVeloz.NET/obj/*
-src/PagueVeloz/bin/*
-src/PagueVeloz/obj/*
+src/PagueVeloz.NET/pkg/*
 tests/PagueVeloz.NET.Tests/bin/*
 tests/PagueVeloz.NET.Tests/obj/*
-tests/PagueVeloz.Tests/bin/*
-tests/PagueVeloz.Tests/obj/*

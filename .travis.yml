@@ -5,8 +5,5 @@ mono: none
 dotnet: 1.0.0-preview2-003121
 solution: PagueVeloz.sln
 
-install:
-  - nuget restore PagueVeloz.sln
-  - nuget install xunit.runners -Version 2.0.0 -OutputDirectory testrunner
 script:
   - cd tests/PagueVeloz.Tests && dotnet restore && dotnet build && dotnet test

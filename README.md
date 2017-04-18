@@ -1,6 +1,6 @@
 # pagueveloz-net
 
-[![CircleCI](https://circleci.com/gh/johnnyasantoss/pagueveloz-net.svg?style=svg)](https://circleci.com/gh/johnnyasantoss/pagueveloz-net)
+[![CircleCI](https://circleci.com/gh/PagueVeloz/pagueveloz-net.svg?style=svg)](https://circleci.com/gh/PagueVeloz/pagueveloz-net)
 
 Biblioteca .NET (C#) de integração com os serviços da API PagueVeloz.
 

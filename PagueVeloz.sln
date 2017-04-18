@@ -1,15 +1,15 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26114.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC83998D-3869-44B6-BE51-485B2E0DF987}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{493DCA21-863B-4E8D-8888-FED5CA6ED348}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PagueVeloz", "src\PagueVeloz\PagueVeloz.xproj", "{598CA4B7-50FD-438E-AC91-A8EA8BEDAADC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagueVeloz", "src\PagueVeloz\PagueVeloz.csproj", "{598CA4B7-50FD-438E-AC91-A8EA8BEDAADC}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "PagueVeloz.Tests", "tests\PagueVeloz.Tests\PagueVeloz.Tests.xproj", "{8C00CEE4-CEA8-4CD4-8358-D775F3B67079}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PagueVeloz.Tests", "tests\PagueVeloz.Tests\PagueVeloz.Tests.csproj", "{8C00CEE4-CEA8-4CD4-8358-D775F3B67079}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

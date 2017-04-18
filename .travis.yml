@@ -1,9 +1,0 @@
-language: csharp
-dist: trusty
-sudo: required
-mono: none
-dotnet: 1.0.0-preview2-003121
-solution: PagueVeloz.sln
-
-script:
-  - cd tests/PagueVeloz.Tests && dotnet restore && dotnet build && dotnet test

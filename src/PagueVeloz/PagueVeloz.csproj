@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Authors>Robson da Silva</Authors>
+    <TargetFramework>netstandard1.1</TargetFramework>
+    <Description>Biblioteca de integração com os serviços da API PagueVeloz</Description>
+    <AssemblyTitle>PagueVeloz</AssemblyTitle>
+    <AssemblyName>PagueVeloz</AssemblyName>
+    <PackageId>PagueVeloz</PackageId>
+    <PackageTags>pagueveloz;pague;veloz;boleto;cartão;pagamento</PackageTags>
+    <PackageIconUrl>https://www.pagueveloz.com.br/Content/Img/apple-touch-icon-57x57.png</PackageIconUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/PagueVeloz/pagueveloz-net.git</RepositoryUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.2</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>

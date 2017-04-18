@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: microsoft/dotnet:1.1-sdk
+    working_directory: ~/app
+    steps:
+      - checkout
+      - run: dotnet restore
+      - run: dotnet build
+      - run: dotnet test ./tests/PagueVeloz.Tests/PagueVeloz.Tests.csproj
+      - store_artifacts:
+          path: ~/app/**/obj

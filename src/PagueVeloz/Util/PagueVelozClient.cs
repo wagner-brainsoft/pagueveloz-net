@@ -1,4 +1,5 @@
 ﻿using PagueVeloz.APIs.Boleto;
+using PagueVeloz.APIs.PagamentoConta;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -39,6 +40,7 @@ namespace PagueVeloz.Util
             _http = new PagueVelozHttp(this);
 
             Boletos = new BoletoAPI(this);
+            PagamentoDeContas = new PagamentoContaAPI(this);
         }
 
         /// <summary>
@@ -136,6 +138,11 @@ namespace PagueVeloz.Util
         /// Referência para a API de boletos.
         /// </summary>
         public BoletoAPI Boletos { get; }
+
+        /// <summary>
+        /// Referência para a API de pagamento de contas.
+        /// </summary>
+        public PagamentoContaAPI PagamentoDeContas { get; }
 
         #endregion
     }

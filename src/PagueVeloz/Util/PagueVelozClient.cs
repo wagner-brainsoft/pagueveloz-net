@@ -2,7 +2,9 @@
 using PagueVeloz.APIs.PagamentoConta;
 using System;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
+using PagueVeloz.APIs.Boleto.V8;
 
 namespace PagueVeloz.Util
 {
@@ -40,6 +42,7 @@ namespace PagueVeloz.Util
             _http = new PagueVelozHttp(this);
 
             Boletos = new BoletoAPI(this);
+            BoletosV8 = new BoletoAPIV8(this);
             PagamentoDeContas = new PagamentoContaAPI(this);
             Saques = new SaqueAPI(this);
         }
@@ -78,8 +81,9 @@ namespace PagueVeloz.Util
         /// </summary>
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
-        public async Task<TOut> GetAsync<TOut>(string url) => await NormalizeResponse<TOut>(await _http.GetAsync(url));
+        public async Task<TOut> GetAsync<TOut>(string url, CancellationToken cancellationToken = default) => await NormalizeResponse<TOut>(await _http.GetAsync(url, cancellationToken));
 
         /// <summary>
         /// Realiza um POST na API.
@@ -88,8 +92,9 @@ namespace PagueVeloz.Util
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
         /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
-        public async Task<TOut> PostAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PostAsync(url, content));
+        public async Task<TOut> PostAsync<TIn, TOut>(string url, TIn content, CancellationToken cancellationToken = default) => await NormalizeResponse<TOut>(await _http.PostAsync(url, content, cancellationToken));
 
         /// <summary>
         /// Realiza um PUT na API.
@@ -98,16 +103,18 @@ namespace PagueVeloz.Util
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
         /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
-        public async Task<TOut> PutAsync<TIn, TOut>(string url, TIn content) => await NormalizeResponse<TOut>(await _http.PutAsync(url, content));
+        public async Task<TOut> PutAsync<TIn, TOut>(string url, TIn content, CancellationToken cancellationToken = default) => await NormalizeResponse<TOut>(await _http.PutAsync(url, content, cancellationToken));
 
         /// <summary>
         /// Realiza um DELETE na API.
         /// </summary>
         /// <typeparam name="TOut">O tipo do objeto que deve retornar da API.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
+        /// <param name="cancellationToken">Token de cancelamento.</param>
         /// <returns>Um objeto do tipo 'TOut'.</returns>
-        public async Task<TOut> DeleteAsync<TOut>(string url) => await NormalizeResponse<TOut>(await _http.DeleteAsync(url));
+        public async Task<TOut> DeleteAsync<TOut>(string url, CancellationToken cancellationToken = default) => await NormalizeResponse<TOut>(await _http.DeleteAsync(url, cancellationToken));
 
         /// <summary>
         /// Realiza um POST na API.
@@ -115,7 +122,8 @@ namespace PagueVeloz.Util
         /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
         /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
-        public async Task<HttpResponseMessage> PostAsync<TIn>(string url, TIn content) => await _http.PostAsync(url, content);
+        /// <param name="cancellationToken">Token de cancelamento.</param>
+        public async Task<HttpResponseMessage> PostAsync<TIn>(string url, TIn content, CancellationToken cancellationToken = default) => await _http.PostAsync(url, content, cancellationToken);
 
         /// <summary>
         /// Realiza um PUT na API.
@@ -123,13 +131,15 @@ namespace PagueVeloz.Util
         /// <typeparam name="TIn">O tipo do objeto que será enviado no body da requisição.</typeparam>
         /// <param name="url">Rota da API para requisição.</param>
         /// <param name="content">Um objeto do tipo 'TIn' que será enviado no body da requisição.</param>
-        public async Task<HttpResponseMessage> PutAsync<TIn>(string url, TIn content) => await _http.PutAsync(url, content);
+        /// <param name="cancellationToken">Token de cancelamento.</param>
+        public async Task<HttpResponseMessage> PutAsync<TIn>(string url, TIn content, CancellationToken cancellationToken = default) => await _http.PutAsync(url, content, cancellationToken);
 
         /// <summary>
         /// Realiza um DELETE na API.
         /// </summary>
         /// <param name="url">Rota da API para requisição.</param>
-        public async Task<HttpResponseMessage> DeleteAsync(string url) => await _http.DeleteAsync(url);
+        /// <param name="cancellationToken">Token de cancelamento.</param>
+        public async Task<HttpResponseMessage> DeleteAsync(string url, CancellationToken cancellationToken = default) => await _http.DeleteAsync(url, cancellationToken);
 
         #endregion
 
@@ -139,6 +149,11 @@ namespace PagueVeloz.Util
         /// Referência para a API de boletos.
         /// </summary>
         public BoletoAPI Boletos { get; }
+        
+        /// <summary>
+        /// Referência para a API de boletos V8.
+        /// </summary>
+        public BoletoAPIV8 BoletosV8 { get; }
 
         /// <summary>
         /// Referência para a API de pagamento de contas.

@@ -10,6 +10,8 @@
     <PackageIconUrl>https://www.pagueveloz.com.br/Content/Img/apple-touch-icon-57x57.png</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/PagueVeloz/pagueveloz-net.git</RepositoryUrl>
+    <LangVersion>8</LangVersion>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
